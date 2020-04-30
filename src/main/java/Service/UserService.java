@@ -2,10 +2,7 @@ package Service;
 
 import DAO.UserDao;
 import User.User;
-<<<<<<< HEAD
 import com.sun.istack.internal.NotNull;
-=======
->>>>>>> 4a6a73886ab8147813e1c4493238f2b2226fbf4c
 import com.sun.istack.internal.Nullable;
 import exception.DBException;
 
@@ -81,17 +78,5 @@ public class UserService {
     }
     private static UserDao getUserDAO() {
         return new UserDao(getMysqlConnection());
-    }
-
-    public static User getUserByName(String name) { // Почему нет исключения?????
-        return getUserDAO().getUserByName(name);
-    }
-
-    public static boolean addUser(User user) throws SQLException {
-        if (getUserByName(user.getName()) == null) {
-            getUserDAO().addUser(user);
-            return true;
-        }
-        return false;
     }
 }

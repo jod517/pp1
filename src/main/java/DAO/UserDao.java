@@ -1,7 +1,6 @@
 package DAO;
 
 import User.User;
-<<<<<<< HEAD
 import com.sun.istack.internal.NotNull;
 import com.sun.istack.internal.Nullable;
 
@@ -9,11 +8,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-=======
-import com.sun.istack.internal.Nullable;
-
-import java.sql.*;
->>>>>>> 4a6a73886ab8147813e1c4493238f2b2226fbf4c
 
 public class UserDao {
 
@@ -23,7 +17,6 @@ public class UserDao {
         this.connection = connection;
     }
 
-<<<<<<< HEAD
     public UserDao() {
 
     }
@@ -91,44 +84,6 @@ public class UserDao {
         }
         if (updatesCount != 1) {
             throw new IllegalStateException("Error while adding client!");
-=======
-    public User getUserByName(String name)  {
-
-        User user = null;
-        long id = 0L;
-        String sql = "SELECT * FROM user WHERE name = ?";
-        try (PreparedStatement preStmt = connection.prepareStatement(sql)) {
-
-            preStmt.setString(1, name);
-            ResultSet result = preStmt.executeQuery();
-            result.next();
-            long idUser = result.getLong(1);
-            String nameUser = result.getString(2);
-            String loginUser = result.getString(3);
-            String passwordUser = result.getString(4);
-
-
-
-            user = new User(idUser, nameUser, loginUser, passwordUser);
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } return user;
-    }
-
-
-    public void addUser(User user) {
-        String sql ="INSERT INTO user (name, login, password) VALUES (?, ?, ?)";
-        try (PreparedStatement preStmt = connection.prepareStatement(sql)) {
-            preStmt.setString(1, user.getName());
-            preStmt.setString(2, user.getLogin());
-            preStmt.setString(3, user.getPassword());
-
-            preStmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
->>>>>>> 4a6a73886ab8147813e1c4493238f2b2226fbf4c
         }
     }
 }

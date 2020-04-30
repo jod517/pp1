@@ -9,7 +9,6 @@
 <html>
   <head>
     <title>preproject</title>
-<<<<<<< HEAD
     <style>
       body {
         background: #080; /* Цвет фона */
@@ -27,14 +26,5 @@
   <form action="/preproject1_war_exploded/create">
     <input type="submit" value="Create the New User" />
   </form>
-=======
-  </head>
-  <body>
-  <h1>Start page</h1>
-
-
-  <button onclick="location.href='/preproject1_war_exploded/web/jsp/create'">Add user</button>
-
->>>>>>> 4a6a73886ab8147813e1c4493238f2b2226fbf4c
   </body>
 </html>
