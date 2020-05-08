@@ -25,6 +25,11 @@
         border: 1px solid #333; /* Граница вокруг ячеек */
         padding: 5px; /* Поля в ячейках */
     }
+    TH {
+           background: #fc0; /* Цвет фона */
+           border: 1px solid #333; /* Граница вокруг ячеек */
+           padding: 5px; /* Поля в ячейках */
+       }
 
 
 </style>
@@ -34,14 +39,15 @@
 
 <form action="/preproject1_war_exploded/">
         <input type="submit" value="Start page" />
-
 </form>
-
 <br>
+<form method="post" action="/preproject1_war_exploded/delete">
+    <input type="submit" value="Удалить выбранное"/>
 <table border="3">
     <tr>
 
-        <td>id</td>
+        <td>Chose for delete</td>
+        <td>Click to update / id</td>
         <td>Name</td>
         <td>Login</td>
         <td>Password</td>
@@ -51,10 +57,21 @@
 
 
         <tr>
-            <td> ${col.id} </td>
+
+            <td><input type="checkbox" name="id" value="${col.id}"/></td>
+            <th scope="row">
+                <a href="${pageContext.request.contextPath}/update?id=${col.getId()}">
+                        ${col.getId()}
+                </a>
+
             <td> ${col.name} </td>
             <td> ${col.login} </td>
             <td> ${col.password} </td>
+
+            </th>
+            </th>
+
+
         </tr>
     </c:forEach>
 </table>

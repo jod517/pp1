@@ -6,16 +6,27 @@ import com.sun.istack.internal.NotNull;
 import com.sun.istack.internal.Nullable;
 import exception.DBException;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 
 public class UserService {
 
     public UserService() {
+    }
+
+    public void updateUser(User User) {
+        UserDao dao = getUserDAO();
+        dao.updateUser(User);
+    }
+
+    public User getUserById(long id) {
+        UserDao dao = getUserDAO();
+        return dao.getUserById(id);
+    }
+    public boolean deleteUser(Long id)  {
+        UserDao dao = getUserDAO();
+        return dao.deleteUser(id);
     }
 
     public @NotNull

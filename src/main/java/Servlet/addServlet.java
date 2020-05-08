@@ -42,5 +42,6 @@ public class addServlet extends HttpServlet {
         } catch (DBException e) {
             e.printStackTrace();
         }
+        resp.sendRedirect("/preproject1_war_exploded/create");
     }
 }

@@ -17,6 +17,9 @@
     <title>Title</title>
 </head>
 <body>
+<form action="/preproject1_war_exploded/">
+    <input type="submit" value="Start page" />
+</form>
     <form method="POST" action="/preproject1_war_exploded/create">
 
 
@@ -24,7 +27,7 @@
         <input type="text" name="login"/>
         <input type="password" name="password"/>
 
-        <input type="submit" action="/preproject1_war_exploded/" value="Добавить пользователя" >
+        <input type="submit" value="Добавить пользователя" >
     </form>
 
 

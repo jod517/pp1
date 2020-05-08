@@ -3,6 +3,7 @@ package DAO;
 import User.User;
 import com.sun.istack.internal.NotNull;
 import com.sun.istack.internal.Nullable;
+import exception.DBException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,6 +20,50 @@ public class UserDao {
 
     public UserDao() {
 
+    }
+    public void updateUser(User user) {
+        try (Statement stmt = connection.createStatement()) {
+            stmt.executeUpdate("UPDATE user SET " +
+                    "name='" + user.getName() + "', " +
+                    "login='" + user.getLogin() + "', " +
+                    "password='"+ user.getPassword() + "', " +
+                    "WHERE id='" + user.getId() + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public User getUserById(long ID) {
+
+        User user = new User();
+
+        try (Statement stmt = connection.createStatement()) {
+
+            stmt.execute("SELECT * FROM user WHERE id='" + ID + "'");
+            ResultSet result = stmt.getResultSet();
+
+            result.next();
+
+            user.setId(ID);
+            user.setName(result.getString("name"));
+            user.setLogin(result.getString("login"));
+            user.setPassword(result.getString("password"));
+
+            result.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+    public boolean deleteUser(Long id) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(
+                "delete from user where id= ?")) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public @NotNull
@@ -70,6 +115,7 @@ public class UserDao {
         return getClientBySqlQuery("SELECT * FROM user WHERE name=?", name);
     }
 
+
     public void addUser(User user) throws SQLException {
         int updatesCount = 0;
         if (getUserByName(user.getName()) == null) {
@@ -83,7 +129,10 @@ public class UserDao {
             }
         }
         if (updatesCount != 1) {
-            throw new IllegalStateException("Error while adding client!");
+            throw new IllegalStateException("Error while adding user!");
         }
     }
+
+
+
 }

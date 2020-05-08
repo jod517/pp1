@@ -17,6 +17,9 @@
     <title>Title</title>
 </head>
 <body>
+<form action="/preproject1_war_exploded/">
+    <input type="submit" value="Start page" />
+</form>
     <form method="POST" action="/preproject1_war_exploded/create">
 
 
