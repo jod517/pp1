@@ -15,6 +15,8 @@
 
     <h2> User update page:</h2><br>
     <h4><a href="${pageContext.request.contextPath}/read">Go to read page </a></h4>
+
+
     <div class="form-group">
         <label for="userName">User name</label>
         <input placeholder="${col.name}" type="text" width=100px name="name" class="form-control" id="userName" aria-describedby="userNameHelp">

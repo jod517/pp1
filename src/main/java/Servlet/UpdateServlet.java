@@ -30,7 +30,7 @@ public class UpdateServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        userService.updateUser(new User(id , name, password, login));
+        userService.updateUser(new User(id , name, login , password));
 
         response.sendRedirect("/preproject1_war_exploded/read");
     }

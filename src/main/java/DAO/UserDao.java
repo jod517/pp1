@@ -22,16 +22,20 @@ public class UserDao {
 
     }
     public void updateUser(User user) {
-        try (Statement stmt = connection.createStatement()) {
-            stmt.executeUpdate("UPDATE user SET " +
-                    "name='" + user.getName() + "', " +
-                    "login='" + user.getLogin() + "', " +
-                    "password='"+ user.getPassword() + "', " +
-                    "WHERE id='" + user.getId() + "'");
-        } catch (SQLException e) {
+        String sql = "UPDATE user SET name = ?, login = ?, password = ? WHERE id = ?";
+        try (PreparedStatement preStmt = connection.prepareStatement(sql)) {
+
+            preStmt.setString(1, user.getName());
+            preStmt.setString(2, user.getLogin());
+            preStmt.setString(3, user.getPassword());
+            preStmt.setLong(4, user.getId());
+            preStmt.executeUpdate();
+        }catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
+
     public User getUserById(long ID) {
 
         User user = new User();
