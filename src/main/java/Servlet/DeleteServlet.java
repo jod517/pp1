@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 @WebServlet("/delete")
 public class DeleteServlet extends HttpServlet {
-    UserService userService = new UserService();
+    UserService userService = UserService.getInstance();
 
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

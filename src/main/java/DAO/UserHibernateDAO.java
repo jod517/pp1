@@ -4,19 +4,13 @@ package DAO;
 
 import User.User;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserHibernateDAO implements UserDAO {
 
     private Session session;
+
     public UserHibernateDAO(Session session) {
         this.session = session;
     }
@@ -24,8 +18,9 @@ public class UserHibernateDAO implements UserDAO {
     @Override
     public void updateUser(User user) {
         session.beginTransaction();
-        session.merge(user);
+        session.update(user);
         session.getTransaction().commit();
+        session.close();
 
     }
 
@@ -40,8 +35,7 @@ public class UserHibernateDAO implements UserDAO {
     @Override
     public boolean deleteUser(Long id) {
         session.beginTransaction();
-        User user = null;
-        user = getUserById(id);
+        User user = session.get(User.class, id);
         session.delete(user);
         session.getTransaction().commit();
         session.close();

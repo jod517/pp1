@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet("/update")
 public class UpdateServlet extends HttpServlet {
 
-    UserService userService = new UserService();
+    UserService userService = UserService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +24,7 @@ public class UpdateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        UserService userService = UserService.getInstance();
         long id = Long.parseLong(request.getParameter("id"));
         String name = request.getParameter("name");
         String login = request.getParameter("login");

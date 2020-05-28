@@ -11,33 +11,12 @@
     <title>Update</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/update?id=${col.id}" method="POST">
-
-    <h2> User update page:</h2><br>
-    <h4><a href="${pageContext.request.contextPath}/read">Go to read page </a></h4>
-
-
-    <div class="form-group">
-        <label for="userName">User name</label>
-        <input placeholder="${col.name}" type="text" width=100px name="name" class="form-control" id="userName" aria-describedby="userNameHelp">
-        <small id="userNameHelp" class="form-text text-muted">Enter user name</small>
-    </div>
-
-
-        <div class="form-group">
-            <label for="userLogin">User login</label>
-            <input placeholder="${col.login}" type="text"  width=100px name="login" class="form-control" id="userLogin" aria-describedby="userLoginHelp">
-            <small id="userLoginHelp" class="form-text text-muted">Enter user login</small>
-        </div>
-
-
-    <div class="form-group">
-        <label for="userPassword">User password</label>
-        <input placeholder="${col.password}" type="password"  width=100px name="password" class="form-control" id="userPassword" aria-describedby="userPasswordHelp">
-        <small id="userPasswordHelp" class="form-text text-muted">Enter user password</small>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Update user</button>
+<<form action="${pageContext.request.contextPath}/update?id=${col.id}" method="POST">
+    <input required type="text" name="name" placeholder="New name">
+    <input required type="text" name="login" placeholder="New login">
+    <input required type="password" name="password" placeholder="New password">
+    <input type="submit" value="Update user">
+</form>
 </form>
 </body>
 </html>

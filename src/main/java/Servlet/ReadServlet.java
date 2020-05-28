@@ -19,7 +19,7 @@ import java.util.List;
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
 
-        UserService userService = new UserService();
+        UserService userService = UserService.getInstance();
         List<User> col = userService.getAllUsers();
         for (User st : col) {
 

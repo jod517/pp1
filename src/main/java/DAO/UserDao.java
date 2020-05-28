@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserDAO  {
 
-    void updateUser(User User);
+    void updateUser(User user);
     User getUserById(long id);
     boolean deleteUser(Long id);
     List<User> getAllUsers() throws SQLException;
